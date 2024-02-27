@@ -1,0 +1,123 @@
+.footer {
+  //display: flex;
+  //justify-content: space-between;
+  //align-items: center;
+  padding: 20px 50px;
+  background-color: #f8f8f8;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Josefin Sans', sans-serif;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: #eaeaea; // Немного меняем фон при наведении
+  }
+  .share-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    .logo-footer {
+      height: 40px;
+      padding:20px 0;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.1); // Увеличение логотипа при наведении
+      }
+    }
+  }
+
+  .footer-nav, .footer-contact {
+    display: flex;
+    flex-direction: column;
+
+    a, p {
+      text-decoration: none;
+      color: #333;
+      margin: 5px 0;
+      transition: color 0.3s, transform 0.3s;
+
+      &:hover {
+        color: #0056b3;
+        transform: translateY(-5px); // Поднимаем элемент при наведении
+      }
+    }
+  }
+.copied-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  animation-fill-mode: forwards;
+}
+
+.copied-message.show {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.copied-message.hide {
+  animation: fadeOut 0.5s;
+}
+  @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+}
+
+.footer-contact p {
+  cursor: pointer; /* Добавляет указатель курсора для нажатия */
+}
+
+/* Стиль для отображения сообщения */
+.footer-contact .copied-message {
+  display: block;
+}
+
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 20px;
+    flex-direction: column;
+    text-align: center;
+
+    .footer-content {
+      flex-direction: column;
+    }
+
+    .footer-nav, .footer-contact {
+      margin-top: 10px;
+    }
+  }
+}

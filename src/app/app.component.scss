@@ -1,0 +1,142 @@
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 99;
+}
+
+.share-btn, .scroll-top-btn {
+  background-color: #007bff; /* Цвет фона */
+  color: #ffffff; /* Цвет иконки */
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Тень */
+  transition: background-color 0.3s;
+}
+
+.share-btn:hover, .scroll-top-btn:hover {
+  background-color: #0056b3; /* Цвет фона при наведении */
+}
+
+.scroll-top-btn {
+  display: none; /* Изначально скрыта */
+}
+/* Основные стили для модального окна */
+:root {
+  --modal-background-color: #fff;
+  --overlay-color: rgba(0, 0, 0, 0.5);
+  --button-color: #007bff;
+  --button-hover-color: #0056b3;
+  --text-color: #000;
+  --close-btn-color: #aaa;
+  --close-btn-hover-color: #777;
+}
+
+.share-modal {
+  font-family: 'Josefin Sans', sans-serif;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.share-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+}
+
+.share-modal-content.active {
+  transform: scale(1);
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--close-btn-color);
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: var(--close-btn-hover-color);
+}
+
+.social-share-buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--button-color);
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.social-share-buttons a:hover {
+  background-color: var(--button-hover-color);
+  color: #777;
+}
+.url{
+  display: flex;
+  flex-direction: row;
+  input[type="text"] {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+  }
+  .button-copy{
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0 10px;
+    padding: 5px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 25px; // Скругление углов
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    text-decoration: none; // Если кнопка является ссылкой
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
+      transform: translateY(-2px); // Небольшое поднятие кнопки
+    }
+
+    &:active {
+      transform: translateY(1px); // Эффект нажатия
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+  }
+}
+
+

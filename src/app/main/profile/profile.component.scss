@@ -1,0 +1,109 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 80px 0 20px 0;
+  font-family: 'Josefin Sans', sans-serif;
+
+
+
+
+  .text-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .pre-text{
+      font-size: 1.5em;
+    }
+    h1 {
+      margin: 0;
+      font-size: 5em;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+    .main-text{
+      max-width: 70%; // Ограничиваем ширину до 30% от ширины страницы
+      margin: 10px auto 10px auto; // Автоматические отступы слева и справа для центрирования
+      text-align: center;
+
+
+
+    }
+
+    .download-resume-btn {
+      padding: 12px 25px;
+      font-size: 1em;
+      font-weight: bold;
+      color: #000;
+      background-color: #fff;
+      border: 2px solid #000;
+      border-radius: 25px; // Скругление углов
+      cursor: pointer;
+      outline: none;
+      text-align: center;
+      text-decoration: none; // Если кнопка является ссылкой
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #000;
+        color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
+        transform: translateY(-2px); // Небольшое поднятие кнопки
+      }
+
+      &:active {
+        transform: translateY(1px); // Эффект нажатия
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+  }
+}
+.scroll-to-preview {
+  font-size: 2em; // Пример размера
+  cursor: pointer;
+  margin-top: 20px; // Отступ сверху
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bounce 2s infinite; // Анимация для привлечения внимания
+
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-7.5px);
+  }
+}
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+    text-align: center;
+
+    .my-photo {
+      flex: none;
+    }
+
+    .text-about {
+      h1 {
+        font-size: 2.5em;
+      }
+
+      .main-text {
+        max-width: 80%; // Увеличиваем ширину на мобильных устройствах для лучшего чтения
+      }
+    }
+  }
+}
+

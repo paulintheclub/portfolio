@@ -1,0 +1,15 @@
+<footer class="footer">
+  <div class="share-link">
+        <i class="fa-solid fa-globe"></i>
+  </div>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="assets/Logo/logoforsite.png" alt="Logo" class="logo-footer">
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:pashtet0501@gmail.com">pashtet0501@gmail.com</a>
+      <p (click)="copyPhoneNumber('+421951746439')">+421951746439</p>
+      <div *ngIf="showCopiedMessage" class="copied-message">Copied</div>
+    </div>
+  </div>
+</footer>

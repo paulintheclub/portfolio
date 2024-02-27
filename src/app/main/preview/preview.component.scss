@@ -1,0 +1,178 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5% 10%;
+  font-family: 'Josefin Sans', sans-serif;
+  .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    .buttons{
+      display: flex;
+      flex-direction: row;
+      .toggle-btn {
+        margin-bottom: 0;
+        background: none;
+        border: none;
+        transition: filter 0.2s; // Добавляем плавность перехода
+
+        &:hover, &:focus { // Увеличиваем яркость при наведении и фокусе
+          filter: brightness(0.9);
+        }
+
+        &.active { // Делаем содержимое ещё темнее при активации (например, при нажатии)
+          filter: brightness(0.8);
+        }
+      }
+    }
+    .name{
+      display: flex;
+      flex-direction: row;
+      font-size: 1.5em;
+    }
+  }
+  .two-columns .photo-card {
+    width: 40%;
+  }
+  .three-columns .photo-card {
+    width: 30%;
+  }
+  .gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    align-content: space-around;
+    width: 100%;
+    .photo-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 10px 0;
+      .object {
+  margin: 5% 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+
+  .image {
+    width: 70%;
+    margin: 0 0;
+    padding: 20px 20px;
+    height: auto;
+    border-radius: 0;
+    border: 2mm solid black;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+  .info {
+    height: 40%;
+    padding: 10px;
+    text-align: center;
+      h3 {
+      margin-top: 0;
+    }
+  }
+  .buttons{
+    .showText {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 25px; // Скругление углов
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    text-decoration: none; // Если кнопка является ссылкой
+    transition: all 0.3s ease;
+    font-family: 'Josefin Sans', sans-serif;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
+      transform: translateY(-2px); // Небольшое поднятие кнопки
+    }
+
+    &:active {
+      transform: translateY(1px); // Эффект нажатия
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+        }
+    .saved-button {
+      background-color: #000;
+      color: #fff;
+    }
+      }
+    }
+  }
+  }
+  .go-to {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    .showText {
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 12px 70px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2b2b2b;
+    border: 2px solid #2b2b2b;
+    border-radius: 25px; // Скругление углов
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    text-decoration: none; // Если кнопка является ссылкой
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
+      transform: translateY(-2px); // Небольшое поднятие кнопки
+    }
+
+    &:active {
+      transform: translateY(1px); // Эффект нажатия
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+        }
+  }
+
+}
+.full-height {
+  height: 100% !important;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 5% 2%;
+    .header{
+      .buttons{
+        display: none;
+      }
+    }
+    .gallery {
+      .photo-card{
+        .object{
+          .image{
+            width: 80%;
+            padding: 10px 10px;
+          }
+        }
+      }
+    }
+    .go-to{
+      flex-direction: column;
+
+    }
+  }
+;
+}

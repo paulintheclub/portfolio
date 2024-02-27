@@ -1,0 +1,179 @@
+// header.component.scss
+.navbar {
+position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 11;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2em;
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    .logo {
+      height: 40px;
+      padding:10px 0;
+      margin-right: 5px;
+      z-index: 3;
+    }
+    .menu-icon {
+      font-size: 1.5em;
+      cursor: pointer;
+      display: none; // Показывать только на мобильных устройствах
+      z-index: 3;
+    }
+  }
+
+  .nav-links {
+    .reverse {
+      transform: rotate(180deg);
+    }
+    .fa-chevron-down {
+      transition: transform 0.3s ease-out; /* Переносим сюда для обеспечения анимации в обе стороны */
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+      margin-left: 0;
+      font-weight: bold;
+      position: relative;
+      padding: 5px 10px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: transparent;
+        transition: background-color 0.3s;
+      }
+
+      &:hover:after {
+        background-color: #000;
+      }
+    }
+.dropdown-full-screen {
+  position: relative;
+  display: inline-block;
+
+  &:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+
+  a {
+    color: black;
+    padding: 30px 32px;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+}
+}
+.dropdown-small-screen {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 10px 0;
+  .name-of-portfolio{
+    font-weight: normal;
+  }
+  a {
+    padding: 0px 10px;
+    margin: 5px 0;
+  }
+}
+
+
+.show {
+  display: flex;
+  flex-direction: column;
+}
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    a {
+      color: #000;
+      margin-left: 20px;
+      font-size: 1.5em;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #0056b3; // цвет для Instagram и LinkedIn
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 10px;
+    .navbar-brand {
+      .logo{
+        display: none;
+      }
+      .menu-icon{
+        display: flex;
+      }
+    }
+
+    .nav-links{
+      font-family: Rubik, sans-serif;
+      font-weight: 300;
+      font-style: normal;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 100px;
+      padding-left: 20px;
+      align-items: flex-start;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 2; // Убедитесь, что меню находится поверх остального контента
+
+      a {
+        font-size: 0.8em;
+        margin: 10px 0;
+      }
+
+      &.open {
+        transform: translateX(0);
+      }
+        .dropdown-full-screen {
+          display: none;
+        }
+        .dropdown-small-screen {
+          display: flex;
+        }
+
+  // Скрытие выпадающего меню, если оно открыто в мобильном режиме
+    }
+  }
+}

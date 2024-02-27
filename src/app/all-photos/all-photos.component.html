@@ -1,0 +1,65 @@
+<div *ngIf="isLoading" class="loader">Загрузка...</div>
+<div *ngIf="!isLoading">
+  <div class="title">
+    All photos
+  </div>
+  <div class="filter" #filter>
+<div class="custom-select-container">
+  <div class="custom-select" [ngClass]="{'active': isSelectOpen}" (click)="toggleSelect()">
+    <div class="selected-value">{{ selectedLocation || 'All Locations' }}</div>
+    <ul class="options-list" *ngIf="isSelectOpen">
+      <li class="option" *ngFor="let location of locations" (click)="selectLocation(location)">
+        {{ location }}
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+  <div class="photo-rows">
+  <div class="photo-row" *ngFor="let photo of photographs" >
+    <div class="photo-cell" (click)="openModal(photo)" data-aos="zoom-in" data-aos-offset="0" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
+      <img [src]="photo.imageUrl" [alt]="photo.name" class="photo-img" >
+      <div class="photo-overlay">
+        <div class="photo-text">Click</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="modal" *ngIf="selectedPhoto" #modal>
+  <div class="control-buttons">
+<!--    *ngIf="!isIncreased"-->
+    <span class="share" (click)="toggleShareModal()"><i class="fa-solid fa-paper-plane"></i></span>
+    <span class="increase" (click)="increaseSize()" ><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    <span class="decrease " (click)="decreaseSize()"><i class="fa-solid fa-magnifying-glass-minus"></i></span>
+    <span class="full-screen" (click)="toggleFullScreen()" *ngIf="!isFullScreen"><i class="fa-solid fa-expand"></i></span>
+    <span class="part-screen" (click)="toggleFullScreen()" *ngIf="isFullScreen"><i class="fa-solid fa-compress"></i></span>
+    <span class="close" (click)="closeModalWithAnimation()"><i class="fa-regular fa-circle-xmark"></i></span>
+  </div>
+  <div class="modal-content" [ngClass]="{'vertical-img': isVertical}">
+    <span class="prev" (click)="showPrevPhoto()">&#10094;</span>
+    <span class="next" (click)="showNextPhoto()">&#10095;</span>
+    <img [src]="selectedPhoto.imageUrl" (load)="onImageLoad($event)" [alt]="selectedPhoto.name" class="modal-img">
+    <p>{{selectedPhoto.name}}</p>
+    <p>{{selectedPhoto.location}}</p>
+
+  </div>
+</div>
+<!-- Модальное окно для поделиться -->
+<div class="share-modal" *ngIf="isShareModalOpen">
+  <div class="share-modal-content">
+    <span class="close-modal" (click)="toggleShareModal()">&times;</span>
+    <h3>Share this Page</h3>
+    <div class="url">
+          <input type="text" readonly value="http://localhost:4200/main" #shareUrl>
+    <button class="button-copy" (click)="copyLink({inputElement : shareUrl})">Copy Link</button>
+    </div>
+
+      <div class="social-share-buttons">
+        <!-- Иконки социальных сетей -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=URL_вашего_сайта" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/share?url=URL_вашего_сайта&text=Текст_для_поделиться" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=URL_вашего_сайта" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container" >
+  <div class="header">
+    <div class="name">
+      Recently added
+    </div>
+    <div class="buttons">
+
+      <button class="toggle-btn" [class.active]="isTwoColumnLayout" [disabled]="isTwoColumnLayout" (click)="setTwoColumnLayout()">
+        <img src="assets/buttons/2on2.svg" alt="2X2">
+      </button> <button class="toggle-btn" [class.active]="!isTwoColumnLayout" [disabled]="!isTwoColumnLayout" (click)="setThreeColumnLayout()">
+      <img src="assets/buttons/3on3.svg" alt="3X3">
+    </button>
+    </div>
+  </div>
+  <div [class.two-columns]="isTwoColumnLayout" [class.three-columns]="!isTwoColumnLayout">
+    <div class="gallery" id="gallery">
+      <div *ngFor="let photo of photographs; let i = index" class="photo-card">
+        <div class="object">
+          <img [src]="photo.imageUrl" [alt]="photo.name" class="image">
+          <div [class]="{'info': true, 'full-height': showFullDescription[i]}">
+            <h3>
+              {{ photo.name }}
+            </h3>
+            <p>
+              {{ photo.location }}
+            </p>
+            <p>
+              {{ photo.description }}
+            </p>
+          </div>
+          <div class="buttons">
+            <button class="showText" *ngIf="!photo.isSaved" (click)="savePhoto(photo.imageUrl, photo.name, photo)">
+              Save
+            </button>
+            <button class="showText" *ngIf="photo.isSaved" [ngClass]="{'saved-button': photo.isSaved}">
+              Saved
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="go-to">
+    <a href="/all-photos">
+      <button class="showText">
+      See all photos
+    </button>
+    </a>
+    </div>
+</div>
