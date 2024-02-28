@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
       scrollTopBtn.style.display = 'none';
     }
   });
+
 }
 
 scrollToTop(): void {
