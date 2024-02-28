@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="nav-links" [class.open]="isMenuOpen">
-    <a href="/main">Main</a>
+    <a [routerLink]="['/main']">Main</a>
     <div class="dropdown-full-screen"
          (mouseenter)="showDropdown = true"
          (mouseleave)="showDropdown = false"
@@ -19,9 +19,9 @@
       </div>
     </div>
     <div class="dropdown-small-screen">
-      <a class="name-of-portfolio" href="/all-photos">Portfolio</a>
-        <a href="/street-photography">Street-photography</a>
-        <a href="/people">People</a>
+      <a class="name-of-portfolio" [routerLink]="['/all-photos']">Portfolio</a>
+        <a [routerLink]="['/street-photography']">Street-photography</a>
+        <a [routerLink]="['/people']">People</a>
     </div>
     <a [routerLink]="['/contacts']">Contacts</a>
   </div>
