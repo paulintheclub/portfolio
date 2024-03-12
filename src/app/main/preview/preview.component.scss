@@ -1,3 +1,36 @@
+  .go-to {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    .showText {
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 12px 70px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2b2b2b;
+    border: 2px solid #2b2b2b;
+    border-radius: 25px; // Скругление углов
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    text-decoration: none; // Если кнопка является ссылкой
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
+      transform: translateY(-2px); // Небольшое поднятие кнопки
+    }
+
+    &:active {
+      transform: translateY(1px); // Эффект нажатия
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+        }
+  }
 .container {
   display: flex;
   flex-direction: column;
@@ -113,39 +146,105 @@
     }
   }
   }
-  .go-to {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    .showText {
-    font-family: 'Josefin Sans', sans-serif;
-    padding: 12px 70px;
-    font-size: 1em;
-    font-weight: bold;
-    color: #fff;
-    background-color: #2b2b2b;
-    border: 2px solid #2b2b2b;
-    border-radius: 25px; // Скругление углов
-    cursor: pointer;
-    outline: none;
-    text-align: center;
-    text-decoration: none; // Если кнопка является ссылкой
-    transition: all 0.3s ease;
 
-    &:hover {
-      background-color: #000;
-      color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
-      transform: translateY(-2px); // Небольшое поднятие кнопки
-    }
-
-    &:active {
-      transform: translateY(1px); // Эффект нажатия
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-          }
-        }
+}
+.modal {
+  font-family: 'Josefin Sans', sans-serif;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  animation: fadeIn 0.5s;
+  .modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  width: 100%;
+  max-width: 1000px;
+  overflow: hidden; // Скрывает содержимое вне границ, полезно для изображений
+    &.vertical-img {
+    width: 30% !important; // Уменьшенная ширина для вертикальных изображений
   }
+    p {
+    margin-top: 15px;
+    text-align: center;
+    color: #333; // Улучшает читаемость
+  }
+ .prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 0; /* Изменено с 50% на 0, чтобы растянуть на всю высоту */
+  bottom: 0; /* Добавлено, чтобы растянуть на всю высоту */
+  display: flex;
+  align-items: center; /* Центрирование по вертикали */
+  justify-content: center; /* Центрирование по горизонтали для ::before */
+  width: auto;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.6s ease;
+  user-select: none;
+}
+
+.prev::before, .next::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40px; /* Увеличиваем область клика влево для .prev */
+  right: -40px; /* Увеличиваем область клика вправо для .next */
+  background-color: transparent;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover, .next:hover, .prev::before:hover, .next::before:hover {
+  color: grey; /* Цвет при наведении */
+}
+}
+  .control-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  span{
+    margin: 10px;
+  }
+}
+  .go-to-all-photos{
+    height: 600px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p{
+      font-size: 2em;
+    }
+    .go-to{
+      font-size: 2em;
+    }
+  }
+}
+
+
+
+
+
+.modal-img {
+  width: 100%;
+  height: auto;
 
 }
 .full-height {
@@ -174,5 +273,10 @@
 
     }
   }
-;
+  .modal-content {
+    width: 100%;
+    &.vertical-img{
+      width: 100% !important;
+    }
+  }
 }

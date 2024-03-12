@@ -15,15 +15,14 @@
     <span class="close" (click)="toggleShareModal()">&times;</span>
     <h3>Share this Page</h3>
     <div class="url">
-          <input type="text" readonly value="http://localhost:4200/main" #shareUrl>
-    <button class="button-copy" (click)="copyLink({inputElement : shareUrl})">Copy Link</button>
+    <input type="text" readonly value="https://paulintheclub.github.io/portfolio/" #shareUrl>
+    <button class="button-copy" (click)="copyPhoneNumber(shareUrl.value)">Copy Link</button>
+    <div *ngIf="showCopiedMessage" class="copied-message">Copied</div>
     </div>
 
       <div class="social-share-buttons">
-        <!-- Иконки социальных сетей -->
-        <a href="https://www.facebook.com/sharer/sharer.php?u=URL_вашего_сайта" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com/share?url=URL_вашего_сайта&text=Текст_для_поделиться" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=URL_вашего_сайта" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/spirin.paul/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/pavlo-spirin/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
       </div>
   </div>
 </div>

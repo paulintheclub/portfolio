@@ -1,8 +1,9 @@
-import {Component, ElementRef, OnInit, OnDestroy,AfterViewInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, OnDestroy, AfterViewInit, ViewChild, HostListener} from '@angular/core';
 import { Photograph } from "../models/photograph.model";
 import { PhotographService } from "../services/photograph.service";
 import * as AOS from 'aos';
 import { NavigationEnd, Router } from '@angular/router';
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-all-photos',
@@ -20,6 +21,8 @@ export class AllPhotosComponent implements OnInit, OnDestroy, AfterViewInit {
   isSelectOpen = false;
   isFullScreen = false;
   scale: number = 1;
+  showCopiedMessage: boolean = false;
+
   constructor(
     private photographService: PhotographService,
     private router: Router
@@ -31,6 +34,14 @@ export class AllPhotosComponent implements OnInit, OnDestroy, AfterViewInit {
         AOS.init();
       }
     });
+    this.router.events.pipe(
+      // Фильтруем, чтобы реагировать только на события завершения навигации
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      // Прокручиваем страницу вверх
+      window.scrollTo(0, 0);
+    });
+
   }
 
   ngOnInit() {
@@ -48,6 +59,7 @@ export class AllPhotosComponent implements OnInit, OnDestroy, AfterViewInit {
 ngAfterViewInit() {
   document.addEventListener('click', this.closeFilterOnOutsideClick.bind(this), true);
 }
+
  closeFilterOnOutsideClick(event: MouseEvent) {
   if (this.filterElementRef && !this.filterElementRef.nativeElement.contains(event.target)) {
     this.isSelectOpen = false;
@@ -176,12 +188,28 @@ showNextPhoto() {
     this.isShareModalOpen = !this.isShareModalOpen;
   }
 
-  copyLink({inputElement}: { inputElement: any }): void {
-    inputElement.select();
-    document.execCommand('copy');
-    // Показать уведомление об успешном копировании
+  copyPhoneNumber(phoneNumber: string) {
+    navigator.clipboard.writeText(phoneNumber).then(() => {
+      this.showCopiedMessage = true;
+      setTimeout(() => {
+        const messageElement = document.querySelector('.copied-message');
+        if (messageElement) {
+          messageElement.classList.add('show');
+          setTimeout(() => {
+            if (messageElement.classList.contains('show')) {
+              messageElement.classList.replace('show', 'hide');
+            }
+            setTimeout(() => {
+              if (messageElement.classList.contains('hide')) {
+                this.showCopiedMessage = false;
+                messageElement.classList.remove('hide');
+              }
+            }, 500); // Длительность анимации fadeOut
+          }, 2000); // Время отображения сообщения
+        }
+      }, 0);
+    });
   }
-
 
 
 }

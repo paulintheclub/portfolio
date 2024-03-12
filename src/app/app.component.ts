@@ -8,6 +8,7 @@ import { Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'Portfolio'
   isShareModalOpen: boolean = false;
+  showCopiedMessage: boolean = false;
   toggleShareModal(): void {
     this.isShareModalOpen = !this.isShareModalOpen;
   }
@@ -30,11 +31,32 @@ export class AppComponent implements OnInit{
   });
 
 }
-
 scrollToTop(): void {
   window.scroll({top: 0, left: 0, behavior: 'smooth'});
 }
 
+  copyPhoneNumber(phoneNumber: string) {
+    navigator.clipboard.writeText(phoneNumber).then(() => {
+      this.showCopiedMessage = true;
+      setTimeout(() => {
+        const messageElement = document.querySelector('.copied-message');
+        if (messageElement) {
+          messageElement.classList.add('show');
+          setTimeout(() => {
+            if (messageElement.classList.contains('show')) {
+              messageElement.classList.replace('show', 'hide');
+            }
+            setTimeout(() => {
+              if (messageElement.classList.contains('hide')) {
+                this.showCopiedMessage = false;
+                messageElement.classList.remove('hide');
+              }
+            }, 500); // Длительность анимации fadeOut
+          }, 2000); // Время отображения сообщения
+        }
+      }, 0);
+    });
+  }
 
 
 
