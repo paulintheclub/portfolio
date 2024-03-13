@@ -13,7 +13,14 @@ export class ProfileComponent implements OnInit {
         AOS.init();
 
   }
-    scrollToPreview() {
-    document.querySelector('app-preview')?.scrollIntoView({ behavior: 'smooth' });
+scrollToPreview() {
+  const previewElement = document.querySelector('app-preview');
+  if (previewElement) {
+    const yOffset = -80; // Здесь задайте отрицательное значение высоты вашей навигационной панели.
+    const y = previewElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({top: y, behavior: 'smooth'});
   }
+}
+
 }

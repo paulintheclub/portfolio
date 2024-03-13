@@ -92,6 +92,10 @@
   background-color: var(--button-color);
   border-radius: 5px;
   transition: background-color 0.2s;
+    i {
+      font-size: 24px; /* Увеличиваем размер шрифта иконок */
+      cursor: pointer; /* Добавляем указатель, чтобы показать, что иконка кликабельна */
+    }
 }
 
 .social-share-buttons a:hover {

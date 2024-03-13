@@ -1,8 +1,10 @@
 <div *ngIf="isLoading" class="loader">Загрузка...</div>
 <div *ngIf="!isLoading">
-  <div class="title">
+
+  <div class="header">
+    <div class="title">
     All photos
-  </div>
+    </div>
   <div class="filter" #filter>
 <div class="custom-select-container">
   <div class="custom-select" [ngClass]="{'active': isSelectOpen}" (click)="toggleSelect()">
@@ -15,6 +17,7 @@
   </div>
 </div>
 </div>
+    </div>
   <div class="photo-rows">
   <div class="photo-row" *ngFor="let photo of photographs" >
     <div class="photo-cell" (click)="openModal(photo)" data-aos="zoom-in" data-aos-offset="0" data-aos-duration="1000" data-aos-easing="ease-out-cubic">

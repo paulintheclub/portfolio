@@ -179,7 +179,7 @@
  .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 0; /* Изменено с 50% на 0, чтобы растянуть на всю высоту */
+  top: 40px; /* Изменено с 50% на 0, чтобы растянуть на всю высоту */
   bottom: 0; /* Добавлено, чтобы растянуть на всю высоту */
   display: flex;
   align-items: center; /* Центрирование по вертикали */
@@ -219,9 +219,22 @@
   flex-direction: row;
   justify-content: flex-end;
 
-  span{
-    margin: 10px;
-  }
+  i {
+  font-size: 24px; /* Увеличиваем размер шрифта иконок */
+  cursor: pointer; /* Добавляем указатель, чтобы показать, что иконка кликабельна */
+}
+    span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Устанавливаем фиксированную ширину для span, чтобы убедиться, что иконки выровнены */
+  height: 40px; /* Устанавливаем фиксированную высоту для span */
+  margin: 10px;
+}
+    span:hover {
+  background-color: rgba(0,0,0,0.1); /* Легкий фон при наведении для визуального отклика */
+  border-radius: 50%; /* Делаем фон круглым */
+}
 }
   .go-to-all-photos{
     height: 600px;
@@ -231,6 +244,7 @@
     align-items: center;
     p{
       font-size: 2em;
+      text-align: center;
     }
     .go-to{
       font-size: 2em;
