@@ -92,12 +92,15 @@
 }
 }
 .modal-content {
-
-  background-color: #fefefe;
-  margin: auto;
-  width: 100%;
-  max-width: 1000px;
-  overflow: hidden; // Скрывает содержимое вне границ, полезно для изображений
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden; // Скрывает содержимое вне границ, полезно для изображений
     &.vertical-img {
     width: 30% !important; // Уменьшенная ширина для вертикальных изображений
   }
@@ -147,9 +150,8 @@
 
 
 .modal-img {
-  width: 100%;
-  height: auto;
-
+    max-width: 90%;
+    max-height: 90vh;
 }
 .loader {
   position: fixed;

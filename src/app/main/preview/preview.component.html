@@ -40,13 +40,32 @@
       </div>
     </div>
   </div>
+  <div class="divider-section">
+  <div class="divider" ></div>
   <div class="go-to">
     <a [routerLink]="['/all-photos']">
-      <button class="showText">
+      <button class="showText fix-width">
       See all photos
     </button>
     </a>
     </div>
+      <div class="go-to">
+    <a [routerLink]="['/contacts']">
+      <button class="showText fix-width">
+      Contacts
+    </button>
+    </a>
+    </div>
+    <div class="social-icons">
+  <a href="https://www.instagram.com/yourusername" target="_blank" class="icon instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/yourusername" target="_blank" class="icon linkedin">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+
+  </div>
 </div>
 <div class="modal" *ngIf="selectedPhoto" #modal>
   <div class="control-buttons">

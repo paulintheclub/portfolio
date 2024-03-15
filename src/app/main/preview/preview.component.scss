@@ -1,36 +1,121 @@
-  .go-to {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    .showText {
+.divider-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap:20px;
+}
+
+.divider {
+  width: 80%;
+  height: 3px;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100%; // Полная длина линии
+    height: 100%;
+    background: linear-gradient(to right, #a67b5b, #8d6449, #a67b5b);
+    transform: translateX(-50%);
+    animation: slideIn 2s ease-out forwards;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.go-to {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .showText {
     font-family: 'Josefin Sans', sans-serif;
     padding: 12px 70px;
     font-size: 1em;
     font-weight: bold;
     color: #fff;
-    background-color: #2b2b2b;
-    border: 2px solid #2b2b2b;
-    border-radius: 25px; // Скругление углов
+    background: linear-gradient(145deg, #a67b5b 0%, #8d6449 100%);
+    border: none;
+    border-radius: 25px;
     cursor: pointer;
     outline: none;
-    text-align: center;
-    text-decoration: none; // Если кнопка является ссылкой
+    position: relative;
+    overflow: hidden;
     transition: all 0.3s ease;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #dec8b1 0%, #c2a388 99%, #b08b68 100%);
+      transition: all 0.5s ease;
+      z-index: -1;
+    }
+
+    &:hover::before {
+      left: 0;
+    }
 
     &:hover {
-      background-color: #000;
-      color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
-      transform: translateY(-2px); // Небольшое поднятие кнопки
+      color: #3e2c22;
+      background: linear-gradient(145deg, #8d6449 0%, #a67b5b 100%);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     &:active {
-      transform: translateY(1px); // Эффект нажатия
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-          }
-        }
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
   }
+}
+.fix-width{
+  width: 250px;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    background: var(--icon-bg, linear-gradient(135deg, #f093fb 0%, #f5576c 100%));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: scale(1.1);
+      background: var(--icon-bg-hover, linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%));
+    }
+  }
+
+  .instagram, .linkedin {
+    --icon-bg: linear-gradient(135deg, #8d5524, #c49a6c);
+    --icon-bg-hover: linear-gradient(135deg, #c49a6c, #8d5524);
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -163,11 +248,15 @@
   justify-content: stretch;
   animation: fadeIn 0.5s;
   .modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  width: 100%;
-  max-width: 1000px;
-  overflow: hidden; // Скрывает содержимое вне границ, полезно для изображений
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden; // Скрывает содержимое вне границ, полезно для изображений
     &.vertical-img {
     width: 30% !important; // Уменьшенная ширина для вертикальных изображений
   }
@@ -257,9 +346,8 @@
 
 
 .modal-img {
-  width: 100%;
-  height: auto;
-
+    max-width: 90%;
+    max-height: 90vh;
 }
 .full-height {
   height: 100% !important;

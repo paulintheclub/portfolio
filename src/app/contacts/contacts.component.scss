@@ -10,8 +10,8 @@ padding-bottom: 0;
   font-family: 'Josefin Sans', sans-serif;
 
 
-  .contact-section, .form-section {
-    width: 40%;
+  .section, .form-section {
+    width: 90%;
     flex-basis: 45%;
     background: white;
     padding: 30px;
@@ -28,9 +28,7 @@ padding-bottom: 0;
     textarea{
       font-family: 'Josefin Sans', sans-serif;
     }
-    &:hover {
-      transform: translateY(-5px);
-    }
+
 
     h2 {
       color: #333;
@@ -82,51 +80,138 @@ padding-bottom: 0;
     }
   }
 }
-
-
-  }
-
-  .form-section {
-    form {
+  .photos {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    .photo-of-me{
+      img{
+        width:130px;
+        height: 130px;
+        border-radius: 10px;
+      }
+      }
+    .pre-text{
       display: flex;
       flex-direction: column;
-      font-family: 'Josefin Sans', sans-serif;
-
-      input, textarea {
-        margin-bottom: 15px;
-        padding: 10px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
+      justify-content: flex-start;
+      align-items: flex-start;
+      .name-surname{
+        font-size: 2em;
+        font-weight: 700;
+        margin: 10px;
+        margin-top: 20px;
       }
-
-      .sending {
-      padding: 12px 25px;
-      font-size: 1em;
-      font-weight: bold;
-      color: #000;
-      background-color: #fff;
-      border: 2px solid #000;
-      border-radius: 25px; // Скругление углов
-      cursor: pointer;
-      outline: none;
-      text-align: center;
-      text-decoration: none; // Если кнопка является ссылкой
-      transition: all 0.3s ease;
-
-      &:hover {
-        background-color: #000;
-        color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
-        transform: translateY(-2px); // Небольшое поднятие кнопки
+      .category{
+        margin: 10px;
+        background-color: #F6E5E5;
+        border-radius: 41px 41px 41px 41px;
+        padding: 3px 10px 3px 10px;
+        font-weight: 300;
+        text-align: center;
       }
-
-      &:active {
-        transform: translateY(1px); // Эффект нажатия
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      }
-    }
     }
   }
+    .text-about-me{
+      margin-top: 10px;
+    }
+.principles {
+  display: flex;
+  flex-direction: column; // Вертикальное расположение элементов
+  align-items: center; // Выравнивание элементов по центру по горизонтали
+  gap: 20px; // Расстояние между элементами
+  padding-top: 10px;
+  max-width: 1200px; // Максимальная ширина блока, чтобы текст не растягивался слишком широко на больших экранах
+  margin: auto; // Автоматические отступы для центрирования блока
+}
+
+.paragraph {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; // Занимает всю доступную ширину
+  transition: transform 0.3s ease; // Анимация при наведении
+
+  &:hover {
+    transform: translateY(-5px); // Поднимается при наведении, создавая эффект "подъема"
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); // Увеличиваем тень для большего акцента
+  }
+}
+
+.title {
+  background: linear-gradient(101deg, #CDDCFC 0%, #F2DADD 50.09%, #F8B7BF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Сделать текст прозрачным, чтобы виден был только градиент */
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center; // Центрирование заголовка
+}
+
+.text-of-principles {
+  color: black;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify; // Выравнивание текста по ширине для лучшей читаемости
+}
+
+@media (max-width: 768px) {
+  .principles {
+    flex-direction: column; // На маленьких экранах элементы идут один за другим
+  }
+}
+
+  }
+.background {
+    background-color: transparent;
+    background-image: linear-gradient(147deg, #E3EDFF66 0%, #F2DADD66 100%);
+}
+
+
+  //.form-section {
+  //  form {
+  //    display: flex;
+  //    flex-direction: column;
+  //    font-family: 'Josefin Sans', sans-serif;
+  //
+  //    input, textarea {
+  //      margin-bottom: 15px;
+  //      padding: 10px;
+  //      border-radius: 4px;
+  //      border: 1px solid #ccc;
+  //    }
+  //
+  //    .sending {
+  //    padding: 12px 25px;
+  //    font-size: 1em;
+  //    font-weight: bold;
+  //    color: #000;
+  //    background-color: #fff;
+  //    border: 2px solid #000;
+  //    border-radius: 25px; // Скругление углов
+  //    cursor: pointer;
+  //    outline: none;
+  //    text-align: center;
+  //    text-decoration: none; // Если кнопка является ссылкой
+  //    transition: all 0.3s ease;
+  //
+  //    &:hover {
+  //      background-color: #000;
+  //      color: #fff;
+  //      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
+  //      transform: translateY(-2px); // Небольшое поднятие кнопки
+  //    }
+  //
+  //    &:active {
+  //      transform: translateY(1px); // Эффект нажатия
+  //      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  //    }
+  //  }
+  //  }
+  //}
 }
 @media (max-width: 768px) {
   .contacts-container{

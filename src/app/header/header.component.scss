@@ -12,9 +12,10 @@ position: fixed;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 2em;
+  font-size: 1.5em;
 
   .navbar-brand {
+    flex: 1;
     display: flex;
     align-items: center;
     .logo {
@@ -32,6 +33,10 @@ position: fixed;
   }
 
   .nav-links {
+      flex: 2; /* Устанавливает ширину центральной колонки, чтобы занять все доступное пространство */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     .reverse {
       transform: rotate(180deg);
     }
@@ -44,7 +49,7 @@ position: fixed;
       margin-left: 0;
       font-weight: bold;
       position: relative;
-      padding: 5px 10px;
+      padding: 5px 20px;
 
       &:after {
         content: '';
@@ -60,6 +65,7 @@ position: fixed;
       &:hover:after {
         background-color: #000;
       }
+
     }
 .dropdown-full-screen {
   position: relative;
@@ -98,7 +104,7 @@ position: fixed;
     font-weight: normal;
   }
   a {
-    padding: 0px 10px;
+    padding: 0 20px;
     margin: 5px 0;
   }
 }
@@ -113,6 +119,8 @@ position: fixed;
   .social-links {
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
+    flex: 1;
     a {
       color: #000;
       margin-left: 20px;
@@ -129,6 +137,7 @@ position: fixed;
 @media (max-width: 768px) {
   .navbar {
     padding: 10px 10px;
+    font-size: 2em;
     .navbar-brand {
       .logo{
         display: none;
@@ -171,6 +180,7 @@ position: fixed;
         }
         .dropdown-small-screen {
           display: flex;
+          padding: 5px 0;
         }
 
   // Скрытие выпадающего меню, если оно открыто в мобильном режиме

@@ -1,4 +1,3 @@
-<!-- Поместите этот код в файл вашего HeaderComponent -->
 <nav class="navbar">
   <div class="navbar-brand">
     <img src="assets/Logo/logoforsite.png" alt="Logo" class="logo">
@@ -7,26 +6,25 @@
     </div>
   </div>
   <div class="nav-links" [class.open]="isMenuOpen">
-    <a [routerLink]="['/main']" (click)="toggleMenu()">Main</a>
+    <a [routerLink]="['/main']" routerLinkActive="active-link" (click)="toggleMenu()">Main</a>
     <div class="dropdown-full-screen"
          (mouseenter)="showDropdown = true"
          (mouseleave)="showDropdown = false"
     >
-      <a [routerLink]="['/all-photos']">Portfolio <i [class.reverse]="showDropdown" class="fa-solid fa-chevron-down"></i></a>
+      <a [routerLink]="['/all-photos']" >Portfolio  <i [class.reverse]="showDropdown" class="fa-solid fa-chevron-down"></i></a>
       <div class="dropdown-content" [class.show]="showDropdown">
-        <a [routerLink]="['/street-photography']">Street-photography</a>
-        <a [routerLink]="['/people']">People</a>
+        <a [routerLink]="['/street-photography']" routerLinkActive="active-link">Street-photography</a>
+        <a [routerLink]="['/people']" routerLinkActive="active-link">People</a>
       </div>
     </div>
     <div class="dropdown-small-screen">
-      <a class="name-of-portfolio" [routerLink]="['/all-photos']" (click)="toggleMenu()">Portfolio</a>
-        <a [routerLink]="['/street-photography']" (click)="toggleMenu()">Street-photography</a>
-        <a [routerLink]="['/people']" (click)="toggleMenu()">People</a>
+      <a class="name-of-portfolio" [routerLink]="['/all-photos']" routerLinkActive="active-link"(click)="toggleMenu()">Portfolio</a>
+        <a [routerLink]="['/street-photography']" routerLinkActive="active-link" (click)="toggleMenu()" >Street-photography</a>
+        <a [routerLink]="['/people']" routerLinkActive="active-link" (click)="toggleMenu()">People</a>
     </div>
-    <a [routerLink]="['/contacts']" (click)="toggleMenu()">Contacts</a>
+    <a [routerLink]="['/contacts']" routerLinkActive="active-link" (click)="toggleMenu()">Contacts</a>
   </div>
   <div class="social-links">
-    <!-- Иконки социальных сетей (используйте Font Awesome или SVG иконки) -->
     <a href="https://www.instagram.com/spirin.paul/" target="_blank"><i class="fab fa-instagram"></i></a>
     <a href="https://www.linkedin.com/in/pavlo-spirin/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
   </div>
