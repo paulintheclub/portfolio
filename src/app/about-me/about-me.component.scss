@@ -1,9 +1,8 @@
 .contacts-container {
-  min-height: calc(100vh - 140px - 80px);
   padding-top: 80px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   align-content: space-between;
 padding-bottom: 0;
@@ -81,7 +80,83 @@ padding-bottom: 0;
     }
   }
 }
+  .photos {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    .photo-of-me{
+      img{
+        width:130px;
+        height: 130px;
+        border-radius: 10px;
+      }
+      }
+    .pre-text{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      .name-surname{
+        font-size: 2em;
+        font-weight: 700;
+        margin: 10px;
+        margin-top: 20px;
+      }
+      .category{
+        margin: 10px;
+        background-color: #F6E5E5;
+        border-radius: 41px 41px 41px 41px;
+        padding: 3px 10px 3px 10px;
+        font-weight: 300;
+        text-align: center;
+      }
+    }
+  }
+    .text-about-me{
+      margin-top: 10px;
+    }
+.principles {
+  display: flex;
+  flex-direction: column; // Вертикальное расположение элементов
+  align-items: center; // Выравнивание элементов по центру по горизонтали
+  gap: 20px; // Расстояние между элементами
+  padding-top: 10px;
+  max-width: 1200px; // Максимальная ширина блока, чтобы текст не растягивался слишком широко на больших экранах
+  margin: auto; // Автоматические отступы для центрирования блока
+}
 
+.paragraph {
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; // Занимает всю доступную ширину
+  transition: transform 0.3s ease; // Анимация при наведении
+
+  &:hover {
+    transform: translateY(-5px); // Поднимается при наведении, создавая эффект "подъема"
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); // Увеличиваем тень для большего акцента
+  }
+}
+
+.title {
+  background: linear-gradient(101deg, #CDDCFC 0%, #F2DADD 50.09%, #F8B7BF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Сделать текст прозрачным, чтобы виден был только градиент */
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center; // Центрирование заголовка
+}
+
+.text-of-principles {
+  color: black;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify; // Выравнивание текста по ширине для лучшей читаемости
+}
 
 @media (max-width: 768px) {
   .principles {
@@ -140,7 +215,6 @@ padding-bottom: 0;
 }
 @media (max-width: 768px) {
   .contacts-container{
-    min-height: calc(100vh - 202px - 74px);
     .contact-section, .form-section {
       width: 100%;
     }

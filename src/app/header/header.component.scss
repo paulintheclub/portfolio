@@ -55,16 +55,16 @@ position: fixed;
         content: '';
         position: absolute;
         bottom: 0;
-        left: 0;
-        right: 0;
+        left: 4px;
+        right: 4px;
         height: 2px;
         background-color: transparent;
         transition: background-color 0.3s;
       }
 
-      &:hover:after {
-        background-color: #000;
-      }
+    &:hover:after, &.active-link:after { /* Добавляем сюда класс .active-link */
+      background-color: #000;
+    }
 
     }
 .dropdown-full-screen {

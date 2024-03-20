@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Photograph } from '../models/photograph.model';
+import {PeopleModel} from "../models/people.model";
 
 @Injectable({ providedIn: 'root' })
 export class PhotographService {
@@ -784,8 +785,140 @@ export class PhotographService {
 
   ].map(photo => ({ ...photo, isSaved: false, isRotatingOut: false, isRotatingIn: false}));
 
+    private people: PeopleModel[] = [
+    {
+      id: 1,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/dpPFofU.jpg'
+    },
+          {
+      id: 2,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/jG1q9FS.jpg'
+    },
+          {
+      id: 3,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/7hgpzXb.jpg'
+    },
+          {
+      id: 4,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/64eSKBz.jpg'
+    },
+          {
+      id: 5,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/CQR3OPj.jpg'
+    },
+          {
+      id: 6,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/YGFYxLM.jpg'
+    },
+          {
+      id: 7,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/J4g9izm.jpg'
+    },
+          {
+      id: 8,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/TZcZveu.jpg'
+    },
+          {
+      id: 9,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/qVwqW0R.jpg'
+    },
+          {
+      id: 10,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/YojHJhz.jpg'
+    },
+          {
+      id: 11,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/NfGgazw.jpg'
+    },
+          {
+      id: 12,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/oInZCpC.jpg'
+    },
+          {
+      id: 13,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/QCpg8qo.jpg'
+    },
+          {
+      id: 14,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/wiu6J1V.jpg'
+    },
+          {
+      id: 15,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/uNQzUcI.jpg'
+    },
+          {
+      id: 16,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/1L3s678.jpg'
+    },
+          {
+      id: 17,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/yRSaKiy.jpg'
+    },
+          {
+      id: 18,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/ubMUcMu.jpg'
+    },
+          {
+      id: 19,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/k48RT5G.jpg'
+    },
+          {
+      id: 20,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/H0XG895.jpg'
+    },
+          {
+      id: 21,
+      nameOfActor: 'Sofiia',
+      location: 'Hainburg',
+      imageUrl: 'https://i.imgur.com/JdfAItj.jpg'
+    }
+      ]
+
   getPhotographs() {
     return this.photographs.slice(); // Возвращает копию массива
+  }
+    getPhotographsOfPeople() {
+    return this.people.slice(); // Возвращает копию массива
   }
   getUniqueLocations() {
   return [...new Set(this.photographs.map(photo => photo.location))];

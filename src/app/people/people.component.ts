@@ -1,79 +1,74 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { Photograph} from "../../models/photograph.model";
-import { PhotographService} from "../../services/photograph.service";
-import * as AOS from 'aos';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {PhotographService} from "../services/photograph.service";
+import {NavigationEnd, Router} from "@angular/router";
+import * as AOS from "aos";
+import {filter} from "rxjs";
+import {PeopleModel} from "../models/people.model";
+
 @Component({
-  selector: 'app-preview',
-  templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss']
+  selector: 'app-people',
+  templateUrl: './people.component.html',
+  styleUrls: ['./people.component.scss']
 })
-export class PreviewComponent implements OnInit {
-  photographs!: Photograph[];
-  isTwoColumnLayout: boolean = true;
-  showFullDescription: { [key: number]: boolean } = {}; // Используйте объект для отслеживания состояния для каждой фотографии
+export class PeopleComponent implements OnInit, OnDestroy, AfterViewInit{
   @ViewChild('modal', { static: false }) modalElementRef!: ElementRef;
-  selectedPhoto: Photograph | null = null;
+  photographsOfPeople!: PeopleModel[];
+  selectedPhoto: PeopleModel | null = null;
   isVertical: boolean = false;
+  isLoading: boolean = true;
+  isSelectOpen = false;
   isFullScreen = false;
   scale: string = '';
   scaleSize: boolean = true;
+  showCopiedMessage: boolean = false;
+  constructor(
+    private photographService: PhotographService,
+    private router: Router
+  ) {
+    // Подписываемся на события роутера
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Реинициализируем AOS при каждой смене маршрута
+        AOS.init();
+      }
+    });
+    this.router.events.pipe(
+      // Фильтруем, чтобы реагировать только на события завершения навигации
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      // Прокручиваем страницу вверх
+      window.scrollTo(0, 0);
+    });
 
-  constructor(private photographService: PhotographService) {}
+  }
 
   ngOnInit() {
-    const allPhotographs = this.photographService.getPhotographs();
-    const start = allPhotographs.length - 6;
-    this.photographs = allPhotographs.slice(start).reverse();
-
+    document.body.style.overflow = '';
+    this.photographsOfPeople = this.photographService.getPhotographsOfPeople().reverse();
     AOS.init();
+    this.isLoading = false;
+
+    document.addEventListener('click', this.closeFilterOnOutsideClick.bind(this), true);
   }
-
-  setTwoColumnLayout(): void {
-    if (!this.isTwoColumnLayout) {
-      this.isTwoColumnLayout = true;
-    }
-  }
-
-  setThreeColumnLayout(): void {
-    if (this.isTwoColumnLayout) {
-      this.isTwoColumnLayout = false;
-    }
-  }
-async savePhoto(url: string, name: string, photo: Photograph): Promise<void> {
-  try {
-    // Загружаем изображение как Blob
-    const response = await fetch(url);
-    const blob = await response.blob();
-
-    // Создаем URL для Blob
-    const blobUrl = URL.createObjectURL(blob);
-
-    // Создаем временную ссылку для скачивания
-    const link = document.createElement('a');
-    link.href = blobUrl;
-    link.download = name; // Указываем имя файла для скачивания
-    document.body.appendChild(link); // Добавляем ссылку в документ
-    link.click(); // Имитируем клик по ссылке, чтобы начать скачивание
-
-    // Очистка после скачивания
-    document.body.removeChild(link);
-    URL.revokeObjectURL(blobUrl); // Освобождаем URL Blob
-    photo.isSaved = true;
-  } catch (error) {
-    console.error('Ошибка при скачивании изображения:', error);
-  }
+  ngOnDestroy() {
+  document.removeEventListener('click', this.closeFilterOnOutsideClick.bind(this), true);
+}
+ngAfterViewInit() {
+  document.addEventListener('click', this.closeFilterOnOutsideClick.bind(this), true);
 }
 
-updatePhotosState(): void {
-  this.photographs = [...this.photographs];
+ closeFilterOnOutsideClick(event: MouseEvent) {
+  if (this.filterElementRef && !this.filterElementRef.nativeElement.contains(event.target)) {
+    this.isSelectOpen = false;
+  }
 }
-
-  openModal(photo: Photograph) {
+@ViewChild('filter', { static: false  }) filterElementRef!: ElementRef;
+  openModal(photo: PeopleModel) {
     this.selectedPhoto = photo;
     setTimeout(() => {
       this.modalElementRef.nativeElement.addEventListener('click', this.handleClickOutside.bind(this), true);
     });
-      document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
   }
 
   closeModal() {
@@ -100,54 +95,39 @@ updatePhotosState(): void {
     const width = event.target.naturalWidth;
     this.isVertical = height > width; // Определение, является ли изображение вертикальным
   }
-
 closeModalWithAnimation() {
   const modal = document.querySelector('.modal');
   if (modal !== null) {
     modal.classList.add('fadeOut');
     setTimeout(() => this.closeModal(), 500); // Задержка должна совпадать с продолжительностью анимации
   }
-  this.enableScroll()
+  document.body.style.overflow = '';
 }
-  enableScroll()  {
-    document.body.style.overflow = '';
-}
-
-
+toggleSelect() {
+    this.isSelectOpen = !this.isSelectOpen;
+  }
 
 showPrevPhoto() {
     if(!this.scaleSize){
       this.decreaseSize()
     }
-    const currentIndex = this.photographs.findIndex(photo => photo === this.selectedPhoto);
-    const prev = this.modalElementRef.nativeElement.querySelector('.prev');
-    const next = this.modalElementRef.nativeElement.querySelector('.next');
+    const currentIndex = this.photographsOfPeople.findIndex(photo => photo === this.selectedPhoto);
     if (currentIndex > 0) {
-      this.selectedPhoto = this.photographs[currentIndex - 1];
-      prev.style.display = 'flex'
-      next.style.display = 'flex'
+      this.selectedPhoto = this.photographsOfPeople[currentIndex - 1];
+    } else {
+      this.selectedPhoto = this.photographsOfPeople[this.photographsOfPeople.length - 1]; // Переход к последнему, если текущий - первый
     }
-    else {
-      prev.style.display = 'none'
-  }
-
   }
 
 showNextPhoto() {
     if(!this.scaleSize){
       this.decreaseSize()
     }
-  const currentIndex = this.photographs.findIndex(photo => photo === this.selectedPhoto);
-  const prev = this.modalElementRef.nativeElement.querySelector('.prev');
-  const modal_content = this.modalElementRef.nativeElement.querySelector('.modal-content');
-  const go_to_all_photos = this.modalElementRef.nativeElement.querySelector('.go-to-all-photos');
-  if (currentIndex < this.photographs.length - 1) {
-    this.selectedPhoto = this.photographs[currentIndex + 1];
-    prev.style.display = 'flex'
+  const currentIndex = this.photographsOfPeople.findIndex(photo => photo === this.selectedPhoto);
+  if (currentIndex < this.photographsOfPeople.length - 1) {
+    this.selectedPhoto = this.photographsOfPeople[currentIndex + 1];
   } else {
-    modal_content.style.display = 'none'
-    go_to_all_photos.style.display = 'flex'
-
+    this.selectedPhoto = this.photographsOfPeople[0]; // Переход к первому, если текущий - последний
   }
 }
   // Метод для увеличения изображения
@@ -203,9 +183,33 @@ showNextPhoto() {
         }
     }
   }
+  isShareModalOpen: boolean = false;
+  toggleShareModal(): void {
+    this.isShareModalOpen = !this.isShareModalOpen;
+  }
 
-
-
+  copyPhoneNumber(phoneNumber: string) {
+    navigator.clipboard.writeText(phoneNumber).then(() => {
+      this.showCopiedMessage = true;
+      setTimeout(() => {
+        const messageElement = document.querySelector('.copied-message');
+        if (messageElement) {
+          messageElement.classList.add('show');
+          setTimeout(() => {
+            if (messageElement.classList.contains('show')) {
+              messageElement.classList.replace('show', 'hide');
+            }
+            setTimeout(() => {
+              if (messageElement.classList.contains('hide')) {
+                this.showCopiedMessage = false;
+                messageElement.classList.remove('hide');
+              }
+            }, 500); // Длительность анимации fadeOut
+          }, 2000); // Время отображения сообщения
+        }
+      }, 0);
+    });
+  }
 
 
 }

@@ -17,8 +17,8 @@
       <div *ngFor="let photo of photographs; let i = index" class="photo-card">
         <div class="object" >
           <img (click)="openModal(photo)" [src]="photo.imageUrl" [alt]="photo.name" class="image">
-          <div [class]="{'info': true, 'full-height': showFullDescription[i]}">
-            <h3>
+          <div [class]="{'info': true, 'full-height': showFullDescription[i]}" >
+            <h3 style="font-family: 'Josefin Sans', sans-serif">
               {{ photo.name }}
             </h3>
             <p>
@@ -70,8 +70,8 @@
 <div class="modal" *ngIf="selectedPhoto" #modal>
   <div class="control-buttons">
 <!--    *ngIf="!isIncreased"-->
-    <span class="increase" (click)="increaseSize()" ><i class="fa-solid fa-magnifying-glass-plus"></i></span>
-    <span class="decrease " (click)="decreaseSize()"><i class="fa-solid fa-magnifying-glass-minus"></i></span>
+    <span class="increase" (click)="increaseSize()" *ngIf="scaleSize"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+    <span class="decrease " (click)="decreaseSize()" *ngIf="!scaleSize"><i class="fa-solid fa-magnifying-glass-minus"></i></span>
     <span class="full-screen" (click)="toggleFullScreen()" *ngIf="!isFullScreen"><i class="fa-solid fa-expand"></i></span>
     <span class="part-screen" (click)="toggleFullScreen()" *ngIf="isFullScreen"><i class="fa-solid fa-compress"></i></span>
     <span class="close" (click)="closeModalWithAnimation()"><i class="fa-regular fa-circle-xmark"></i></span>
@@ -87,9 +87,9 @@
     <p>
       To see all the photos click on the button
     </p>
-      <div class="go-to">
-    <a [routerLink]="['/all-photos']">
-      <button class="showText">
+      <div class="go-to fix-width">
+    <a [routerLink]="['/all-photos']" >
+      <button class="showText" (click)="enableScroll()">
       See all photos
     </button>
     </a>

@@ -1,0 +1,416 @@
+.photo-rows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 0 5% 5% 5%;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.photo-row {
+  display: contents;
+}
+
+.photo-cell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.photo-text {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.modal {
+  font-family: 'Josefin Sans', sans-serif;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  animation: fadeIn 0.5s;
+}
+  .control-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  i {
+  font-size: 24px; /* Увеличиваем размер шрифта иконок */
+  cursor: pointer; /* Добавляем указатель, чтобы показать, что иконка кликабельна */
+}
+    span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Устанавливаем фиксированную ширину для span, чтобы убедиться, что иконки выровнены */
+  height: 40px; /* Устанавливаем фиксированную высоту для span */
+  margin: 10px;
+}
+    span:hover {
+  background-color: rgba(0,0,0,0.1); /* Легкий фон при наведении для визуального отклика */
+  border-radius: 50%; /* Делаем фон круглым */
+}
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+    width: 100%;
+    max-width: 1000px;
+    overflow: hidden; // Скрывает содержимое вне границ, полезно для изображений
+    &.vertical-img {
+    width: 30% !important; // Уменьшенная ширина для вертикальных изображений
+  }
+    p {
+    margin-top: 15px;
+    text-align: center;
+    color: #333; // Улучшает читаемость
+  }
+ .prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 40px; /* Изменено с 50% на 0, чтобы растянуть на всю высоту */
+  bottom: 40px; /* Добавлено, чтобы растянуть на всю высоту */
+  display: flex;
+  align-items: center; /* Центрирование по вертикали */
+  justify-content: center; /* Центрирование по горизонтали для ::before */
+  width: auto;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.6s ease;
+  user-select: none;
+}
+
+.prev::before, .next::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40px; /* Увеличиваем область клика влево для .prev */
+  right: -40px; /* Увеличиваем область клика вправо для .next */
+  background-color: transparent;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.prev:hover, .next:hover, .prev::before:hover, .next::before:hover {
+  color: grey; /* Цвет при наведении */
+}
+}
+
+
+.modal-img {
+    max-width: 90%;
+    max-height: 90vh;
+}
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #000;
+}
+
+.custom-select-container {
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 2% 5%;
+  .custom-select {
+    position: relative;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    .selected-value {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .options-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      z-index: 2;
+      max-height: 200px;
+      overflow-y: auto;
+      transform-origin: top;
+      animation: slideDown 0.3s ease-out;
+    }
+    .option {
+      padding: 10px;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+    &.active .selected-value {
+      border-bottom: none;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .photo-rows{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .modal-content {
+    width: 100%;
+    &.vertical-img{
+      width: 100% !important;
+    }
+  }
+}
+
+
+
+.title {
+  padding-top: 80px;
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fadeOut {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+:root {
+  --modal-background-color: #fff;
+  --overlay-color: rgba(0, 0, 0, 0.5);
+  --button-color: #007bff;
+  --button-hover-color: #0056b3;
+  --text-color: #000;
+  --close-btn-color: #aaa;
+  --close-btn-hover-color: #777;
+}
+
+
+.share-modal {
+  font-family: 'Josefin Sans', sans-serif;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  .share-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+}
+
+.share-modal-content.active {
+  transform: scale(1);
+}
+
+.close-modal {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--close-btn-color);
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: var(--close-btn-hover-color);
+}
+
+.social-share-buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--button-color);
+  border-radius: 5px;
+  transition: background-color 0.2s;
+    i {
+      font-size: 24px; /* Увеличиваем размер шрифта иконок */
+      cursor: pointer; /* Добавляем указатель, чтобы показать, что иконка кликабельна */
+    }
+}
+
+.social-share-buttons a:hover {
+  background-color: var(--button-hover-color);
+  color: #777;
+}
+.url{
+  display: flex;
+  flex-direction: row;
+  input[type="text"] {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+  }
+  .button-copy{
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0 10px;
+    padding: 5px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 25px; // Скругление углов
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    text-decoration: none; // Если кнопка является ссылкой
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
+      transform: translateY(-2px); // Небольшое поднятие кнопки
+    }
+
+    &:active {
+      transform: translateY(1px); // Эффект нажатия
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+  }
+}
+.copied-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  animation-fill-mode: forwards;
+}
+
+.copied-message.show {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.copied-message.hide {
+  animation: fadeOut 0.5s;
+}
+  @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+}
+}
+

@@ -7,9 +7,6 @@
   padding: 80px 0 20px 0;
   font-family: 'Josefin Sans', sans-serif;
 
-
-
-
   .text-about {
     display: flex;
     flex-direction: column;
@@ -17,10 +14,14 @@
     justify-content: center;
     .pre-text{
       font-size: 1.5em;
+      margin-top: 10px;
     }
     h1 {
-      margin: 0;
-      font-size: 5em;
+      font-family: 'Josefin Sans', sans-serif;
+      margin: 34px;
+      font-size: 80px;
+      font-weight: 700;
+
     }
 
     p {
@@ -33,33 +34,6 @@
 
 
 
-    }
-
-    .download-resume-btn {
-      padding: 12px 25px;
-      font-size: 1em;
-      font-weight: bold;
-      color: #000;
-      background-color: #fff;
-      border: 2px solid #000;
-      border-radius: 25px; // Скругление углов
-      cursor: pointer;
-      outline: none;
-      text-align: center;
-      text-decoration: none; // Если кнопка является ссылкой
-      transition: all 0.3s ease;
-
-      &:hover {
-        background-color: #000;
-        color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
-        transform: translateY(-2px); // Небольшое поднятие кнопки
-      }
-
-      &:active {
-        transform: translateY(1px); // Эффект нажатия
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      }
     }
 
   }
@@ -98,10 +72,11 @@
     .text-about {
       h1 {
         font-size: 2.5em;
+        margin: 14px;
       }
 
       .main-text {
-        max-width: 80%; // Увеличиваем ширину на мобильных устройствах для лучшего чтения
+        max-width: 80%;
       }
     }
   }

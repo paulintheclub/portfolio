@@ -17,6 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AboutMeComponent } from './about-me/about-me.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { StreetPhotographyComponent } from './street-photography/street-photography.component';
+import { PeopleComponent } from './people/people.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     HeaderComponent,
     ProfileComponent,
     PreviewComponent,
-    FooterComponent
+    FooterComponent,
+    AboutMeComponent,
+    StreetPhotographyComponent,
+    PeopleComponent
   ],
     imports: [
         BrowserModule,
@@ -38,7 +45,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
         MatButtonModule,
         MatInputModule,
         MatDividerModule,
-        HttpClientModule
+        HttpClientModule,
+        DragDropModule
     ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

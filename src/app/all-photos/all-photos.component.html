@@ -1,67 +1,19 @@
-<div *ngIf="isLoading" class="loader">Загрузка...</div>
-<div *ngIf="!isLoading">
+<div class="container">
+  <div class="context">
+    <div class="image-container">
+      <a [routerLink]="['/street-photography']">
+      <img src="https://i.imgur.com/6v8AV7d.jpg" alt="Street Photography" class="preview-image">
+        </a>
+      <div class="overlay-text">Street Photography</div>
+    </div>
+  </div>
+  <div class="context">
+    <div class="image-container">
+      <a [routerLink]="['/people']">
+      <img src="https://i.imgur.com/NLGpRO1.jpg" alt="People" class="preview-image">
+        </a>
+      <div class="overlay-text">People</div>
 
-  <div class="header">
-    <div class="title">
-    All photos
     </div>
-  <div class="filter" #filter>
-<div class="custom-select-container">
-  <div class="custom-select" [ngClass]="{'active': isSelectOpen}" (click)="toggleSelect()">
-    <div class="selected-value">{{ selectedLocation || 'All Locations' }}</div>
-    <ul class="options-list" *ngIf="isSelectOpen">
-      <li class="option" *ngFor="let location of locations" (click)="selectLocation(location)">
-        {{ location }}
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
-    </div>
-  <div class="photo-rows">
-  <div class="photo-row" *ngFor="let photo of photographs" >
-    <div class="photo-cell" (click)="openModal(photo)" data-aos="zoom-in" data-aos-offset="0" data-aos-duration="1000" data-aos-easing="ease-out-cubic">
-      <img [src]="photo.imageUrl" [alt]="photo.name" class="photo-img" >
-      <div class="photo-overlay">
-        <div class="photo-text">Click</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<div class="modal" *ngIf="selectedPhoto" #modal>
-  <div class="control-buttons">
-<!--    *ngIf="!isIncreased"-->
-    <span class="share" (click)="toggleShareModal()"><i class="fa-solid fa-paper-plane"></i></span>
-    <span class="increase" (click)="increaseSize()" ><i class="fa-solid fa-magnifying-glass-plus"></i></span>
-    <span class="decrease " (click)="decreaseSize()"><i class="fa-solid fa-magnifying-glass-minus"></i></span>
-    <span class="full-screen" (click)="toggleFullScreen()" *ngIf="!isFullScreen"><i class="fa-solid fa-expand"></i></span>
-    <span class="part-screen" (click)="toggleFullScreen()" *ngIf="isFullScreen"><i class="fa-solid fa-compress"></i></span>
-    <span class="close" (click)="closeModalWithAnimation()"><i class="fa-regular fa-circle-xmark"></i></span>
-  </div>
-  <div class="modal-content" [ngClass]="{'vertical-img': isVertical}">
-    <span class="prev" (click)="showPrevPhoto()">&#10094;</span>
-    <span class="next" (click)="showNextPhoto()">&#10095;</span>
-    <img [src]="selectedPhoto.imageUrl" (load)="onImageLoad($event)" [alt]="selectedPhoto.name" class="modal-img">
-    <p>{{selectedPhoto.name}}</p>
-    <p>{{selectedPhoto.location}}</p>
-
-  </div>
-</div>
-<!-- Модальное окно для поделиться -->
-<div class="share-modal" *ngIf="isShareModalOpen">
-  <div class="share-modal-content">
-    <span class="close-modal" (click)="toggleShareModal()">&times;</span>
-    <h3>Share this Page</h3>
-    <div class="url">
-        <input type="text" readonly value="https://paulintheclub.github.io/portfolio/" #shareUrl>
-        <button class="button-copy" (click)="copyPhoneNumber(shareUrl.value)">Copy Link</button>
-        <div *ngIf="showCopiedMessage" class="copied-message">Copied</div>
-    </div>
-
-      <div class="social-share-buttons">
-        <a href="https://www.instagram.com/spirin.paul/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/pavlo-spirin/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      </div>
   </div>
 </div>
