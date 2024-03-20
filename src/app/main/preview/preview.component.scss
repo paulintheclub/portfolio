@@ -39,6 +39,7 @@
   justify-content: center;
   align-items: center;
 
+
   .showText {
     font-family: 'Josefin Sans', sans-serif;
     padding: 12px 0;
@@ -326,11 +327,13 @@
 }
 }
   .go-to-all-photos{
-    height: 600px;
+    height: 700px;
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+      margin-right: 10px;
+  margin-left: 10px;
     p{
       font-size: 2em;
       text-align: center;
