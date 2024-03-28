@@ -1,4 +1,4 @@
-<div *ngIf="isLoading" class="loader">Загрузка...</div>
+<div *ngIf="isLoading" class="loader">Loading...</div>
 <div *ngIf="!isLoading">
 
   <div class="header">
@@ -37,7 +37,6 @@
 
   </div>
 </div>
-<!-- Модальное окно для поделиться -->
 <div class="share-modal" *ngIf="isShareModalOpen">
   <div class="share-modal-content">
     <span class="close-modal" (click)="toggleShareModal()">&times;</span>

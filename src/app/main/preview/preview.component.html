@@ -69,7 +69,6 @@
 </div>
 <div class="modal" *ngIf="selectedPhoto" #modal>
   <div class="control-buttons">
-<!--    *ngIf="!isIncreased"-->
     <span class="increase" (click)="increaseSize()" *ngIf="scaleSize"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
     <span class="decrease " (click)="decreaseSize()" *ngIf="!scaleSize"><i class="fa-solid fa-magnifying-glass-minus"></i></span>
     <span class="full-screen" (click)="toggleFullScreen()" *ngIf="!isFullScreen"><i class="fa-solid fa-expand"></i></span>

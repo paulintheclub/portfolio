@@ -915,10 +915,10 @@ export class PhotographService {
       ]
 
   getPhotographs() {
-    return this.photographs.slice(); // Возвращает копию массива
+    return this.photographs.slice();
   }
     getPhotographsOfPeople() {
-    return this.people.slice(); // Возвращает копию массива
+    return this.people.slice();
   }
   getUniqueLocations() {
   return [...new Set(this.photographs.map(photo => photo.location))];

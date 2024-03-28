@@ -5,8 +5,8 @@ const sgMail = require('@sendgrid/mail');
 
 const app = express();
 
-// Замените 'ВАШ_API_KEY' на ваш фактический SendGrid API ключ
-sgMail.setApiKey('');
+
+sgMail.setApiKey('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');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -16,7 +16,7 @@ app.post('/sendmail', (req, res) => {
 
     const msg = {
         to,
-        from: 'pashtet0501@gmail.com', // Замените на ваш верифицированный SendGrid адрес
+        from: 'pashtet0501@gmail.com',
         subject,
         text,
     };

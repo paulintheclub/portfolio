@@ -27,15 +27,15 @@ export class StreetPhotographyComponent implements OnInit, OnDestroy, AfterViewI
     private photographService: PhotographService,
     private router: Router
   ) {
-    // Подписываемся на события роутера
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Реинициализируем AOS при каждой смене маршрута
+
         AOS.init();
       }
     });
     this.router.events.pipe(
-      // Фильтруем, чтобы реагировать только на события завершения навигации
+
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
       // Прокручиваем страницу вверх
@@ -81,10 +81,10 @@ ngAfterViewInit() {
   }
     handleClickOutside(event: Event) {
     if (!this.modalElementRef.nativeElement.contains(event.target)) {
-      // Этот код не будет вызван, так как событие происходит внутри .modal
+
       return;
     }
-    // Проверяем, был ли клик совершен за пределами .modal-content
+
     const modalContent = this.modalElementRef.nativeElement.querySelector('.modal-content');
     const controlContent = this.modalElementRef.nativeElement.querySelector('.control-buttons');
     if (!modalContent.contains(event.target)) {
@@ -96,13 +96,13 @@ ngAfterViewInit() {
   onImageLoad(event: any): void {
     const height = event.target.naturalHeight;
     const width = event.target.naturalWidth;
-    this.isVertical = height > width; // Определение, является ли изображение вертикальным
+    this.isVertical = height > width;
   }
 closeModalWithAnimation() {
   const modal = document.querySelector('.modal');
   if (modal !== null) {
     modal.classList.add('fadeOut');
-    setTimeout(() => this.closeModal(), 500); // Задержка должна совпадать с продолжительностью анимации
+    setTimeout(() => this.closeModal(), 500);
   }
   document.body.style.overflow = '';
 }
@@ -131,7 +131,7 @@ showPrevPhoto() {
     if (currentIndex > 0) {
       this.selectedPhoto = this.photographs[currentIndex - 1];
     } else {
-      this.selectedPhoto = this.photographs[this.photographs.length - 1]; // Переход к последнему, если текущий - первый
+      this.selectedPhoto = this.photographs[this.photographs.length - 1];
     }
   }
 
@@ -143,27 +143,25 @@ showNextPhoto() {
   if (currentIndex < this.photographs.length - 1) {
     this.selectedPhoto = this.photographs[currentIndex + 1];
   } else {
-    this.selectedPhoto = this.photographs[0]; // Переход к первому, если текущий - последний
+    this.selectedPhoto = this.photographs[0];
   }
 }
   increaseSize() {
     const modal_content = this.modalElementRef.nativeElement.querySelector('.modal-content');
     modal_content.style.maxWidth= '1300px'
     this.scaleSize = false
-    this.scale ='120'; // Увеличиваем масштаб на 10%
+    this.scale ='120';
     this.applyScale();
   }
 
-  // Метод для уменьшения изображения
   decreaseSize() {
     const modal_content = this.modalElementRef.nativeElement.querySelector('.modal-content');
     modal_content.style.maxWidth= '1000px'
     this.scaleSize = true
-    this.scale ='90'; // Увеличиваем масштаб на 10%
+    this.scale ='90';
     this.applyScale();
   }
 
-  // Применяем масштаб к элементу изображения
   applyScale() {
     const modalImg = this.modalElementRef.nativeElement.querySelector('.modal-img');
     if (modalImg) {
@@ -173,7 +171,6 @@ showNextPhoto() {
 
     }
 
-    // Переключение между полноэкранным и обычным режимами
   toggleFullScreen() {
     this.isFullScreen = !this.isFullScreen;
     if (!this.isFullScreen) {
@@ -189,11 +186,11 @@ showNextPhoto() {
 
         if (docElmWithBrowsersFullScreenFunctions.requestFullscreen) {
             docElmWithBrowsersFullScreenFunctions.requestFullscreen();
-        } else if (docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen) { /* Firefox */
+        } else if (docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen) {
             docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen();
-        } else if (docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        } else if (docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen) {
             docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen();
-        } else if (docElmWithBrowsersFullScreenFunctions.msRequestFullscreen) { /* IE/Edge */
+        } else if (docElmWithBrowsersFullScreenFunctions.msRequestFullscreen) {
             docElmWithBrowsersFullScreenFunctions.msRequestFullscreen();
         }
     }
@@ -219,8 +216,8 @@ showNextPhoto() {
                 this.showCopiedMessage = false;
                 messageElement.classList.remove('hide');
               }
-            }, 500); // Длительность анимации fadeOut
-          }, 2000); // Время отображения сообщения
+            }, 500);
+          }, 2000);
         }
       }, 0);
     });

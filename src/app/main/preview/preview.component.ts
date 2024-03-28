@@ -10,7 +10,7 @@ import * as AOS from 'aos';
 export class PreviewComponent implements OnInit {
   photographs!: Photograph[];
   isTwoColumnLayout: boolean = true;
-  showFullDescription: { [key: number]: boolean } = {}; // Используйте объект для отслеживания состояния для каждой фотографии
+  showFullDescription: { [key: number]: boolean } = {};
   @ViewChild('modal', { static: false }) modalElementRef!: ElementRef;
   selectedPhoto: Photograph | null = null;
   isVertical: boolean = false;
@@ -41,26 +41,26 @@ export class PreviewComponent implements OnInit {
   }
 async savePhoto(url: string, name: string, photo: Photograph): Promise<void> {
   try {
-    // Загружаем изображение как Blob
+
     const response = await fetch(url);
     const blob = await response.blob();
 
-    // Создаем URL для Blob
+
     const blobUrl = URL.createObjectURL(blob);
 
-    // Создаем временную ссылку для скачивания
+
     const link = document.createElement('a');
     link.href = blobUrl;
-    link.download = name; // Указываем имя файла для скачивания
-    document.body.appendChild(link); // Добавляем ссылку в документ
-    link.click(); // Имитируем клик по ссылке, чтобы начать скачивание
+    link.download = name;
+    document.body.appendChild(link);
+    link.click();
 
     // Очистка после скачивания
     document.body.removeChild(link);
-    URL.revokeObjectURL(blobUrl); // Освобождаем URL Blob
+    URL.revokeObjectURL(blobUrl);
     photo.isSaved = true;
   } catch (error) {
-    console.error('Ошибка при скачивании изображения:', error);
+    console.error('Error until downloading:', error);
   }
 }
 
@@ -83,10 +83,10 @@ updatePhotosState(): void {
   }
     handleClickOutside(event: Event) {
     if (!this.modalElementRef.nativeElement.contains(event.target)) {
-      // Этот код не будет вызван, так как событие происходит внутри .modal
+
       return;
     }
-    // Проверяем, был ли клик совершен за пределами .modal-content
+
     const modalContent = this.modalElementRef.nativeElement.querySelector('.modal-content');
     const controlContent = this.modalElementRef.nativeElement.querySelector('.control-buttons');
     if (!modalContent.contains(event.target)) {
@@ -98,14 +98,14 @@ updatePhotosState(): void {
   onImageLoad(event: any): void {
     const height = event.target.naturalHeight;
     const width = event.target.naturalWidth;
-    this.isVertical = height > width; // Определение, является ли изображение вертикальным
+    this.isVertical = height > width;
   }
 
 closeModalWithAnimation() {
   const modal = document.querySelector('.modal');
   if (modal !== null) {
     modal.classList.add('fadeOut');
-    setTimeout(() => this.closeModal(), 500); // Задержка должна совпадать с продолжительностью анимации
+    setTimeout(() => this.closeModal(), 500);
   }
   this.enableScroll()
 }
@@ -150,25 +150,25 @@ showNextPhoto() {
 
   }
 }
-  // Метод для увеличения изображения
+
   increaseSize() {
     const modal_content = this.modalElementRef.nativeElement.querySelector('.modal-content');
     modal_content.style.maxWidth= '1300px'
     this.scaleSize = false
-    this.scale ='120'; // Увеличиваем масштаб на 10%
+    this.scale ='120';
     this.applyScale();
   }
 
-  // Метод для уменьшения изображения
+
   decreaseSize() {
     const modal_content = this.modalElementRef.nativeElement.querySelector('.modal-content');
     modal_content.style.maxWidth= '1000px'
     this.scaleSize = true
-    this.scale ='90'; // Увеличиваем масштаб на 10%
+    this.scale ='90';
     this.applyScale();
   }
 
-  // Применяем масштаб к элементу изображения
+
   applyScale() {
     const modalImg = this.modalElementRef.nativeElement.querySelector('.modal-img');
     if (modalImg) {
@@ -178,7 +178,6 @@ showNextPhoto() {
 
     }
 
-    // Переключение между полноэкранным и обычным режимами
   toggleFullScreen() {
     this.isFullScreen = !this.isFullScreen;
     if (!this.isFullScreen) {
@@ -194,11 +193,11 @@ showNextPhoto() {
 
         if (docElmWithBrowsersFullScreenFunctions.requestFullscreen) {
             docElmWithBrowsersFullScreenFunctions.requestFullscreen();
-        } else if (docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen) { /* Firefox */
+        } else if (docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen) {
             docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen();
-        } else if (docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        } else if (docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen) {
             docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen();
-        } else if (docElmWithBrowsersFullScreenFunctions.msRequestFullscreen) { /* IE/Edge */
+        } else if (docElmWithBrowsersFullScreenFunctions.msRequestFullscreen) {
             docElmWithBrowsersFullScreenFunctions.msRequestFullscreen();
         }
     }

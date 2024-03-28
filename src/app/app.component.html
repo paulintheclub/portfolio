@@ -1,15 +1,14 @@
 <div class="floating-buttons" >
-  <!-- Кнопка "Поделиться" -->
   <button class="share-btn" aria-label="Share" (click)="toggleShareModal()">
-    <i class="fas fa-paper-plane"></i> <!-- Используйте Font Awesome или любой другой набор иконок -->
+    <i class="fas fa-paper-plane"></i>
   </button>
 
-  <!-- Кнопка "Вверх" -->
+
   <button class="scroll-top-btn" aria-label="Scroll to top" (click)="scrollToTop()">
-    <i class="fas fa-arrow-up"></i> <!-- Используйте Font Awesome или любой другой набор иконок -->
+    <i class="fas fa-arrow-up"></i>
   </button>
 </div>
-<!-- Модальное окно для поделиться -->
+
 <div class="share-modal" *ngIf="isShareModalOpen">
   <div class="share-modal-content">
     <span class="close" (click)="toggleShareModal()">&times;</span>

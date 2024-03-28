@@ -1,4 +1,4 @@
-// header.component.scss
+
 .navbar {
 position: fixed;
   top: 0;
@@ -27,13 +27,13 @@ position: fixed;
     .menu-icon {
       font-size: 1.5em;
       cursor: pointer;
-      display: none; // Показывать только на мобильных устройствах
+      display: none;
       z-index: 3;
     }
   }
 
   .nav-links {
-      flex: 2; /* Устанавливает ширину центральной колонки, чтобы занять все доступное пространство */
+      flex: 2;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -41,7 +41,7 @@ position: fixed;
       transform: rotate(180deg);
     }
     .fa-chevron-down {
-      transition: transform 0.3s ease-out; /* Переносим сюда для обеспечения анимации в обе стороны */
+      transition: transform 0.3s ease-out;
     }
     a {
       text-decoration: none;
@@ -62,7 +62,7 @@ position: fixed;
         transition: background-color 0.3s;
       }
 
-    &:hover:after, &.active-link:after { /* Добавляем сюда класс .active-link */
+    &:hover:after, &.active-link:after {
       background-color: #000;
     }
 
@@ -128,7 +128,7 @@ position: fixed;
       transition: color 0.3s;
 
       &:hover {
-        color: #0056b3; // цвет для Instagram и LinkedIn
+        color: #0056b3;
       }
     }
   }
@@ -165,7 +165,7 @@ position: fixed;
       align-items: flex-start;
       transform: translateX(-100%);
       transition: transform 0.3s ease-in-out;
-      z-index: 2; // Убедитесь, что меню находится поверх остального контента
+      z-index: 2;
 
       a {
         font-size: 0.8em;
@@ -183,7 +183,6 @@ position: fixed;
           padding: 5px 0;
         }
 
-  // Скрытие выпадающего меню, если оно открыто в мобильном режиме
     }
   }
 }

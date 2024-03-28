@@ -24,8 +24,8 @@ showCopiedMessage: boolean = false;
                 this.showCopiedMessage = false;
                 messageElement.classList.remove('hide');
               }
-            }, 500); // Длительность анимации fadeOut
-          }, 2000); // Время отображения сообщения
+            }, 500);
+          }, 2000);
         }
       }, 0);
     });

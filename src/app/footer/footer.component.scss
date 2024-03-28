@@ -1,7 +1,4 @@
 .footer {
-  //display: flex;
-  //justify-content: space-between;
-  //align-items: center;
   padding: 20px 50px;
   background-color: #f8f8f8;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -9,7 +6,7 @@
   transition: background-color 0.5s ease;
 
   &:hover {
-    background-color: #eaeaea; // Немного меняем фон при наведении
+    background-color: #eaeaea;
   }
   .share-link{
     display: flex;
@@ -31,7 +28,7 @@
       transition: transform 0.5s ease;
 
       &:hover {
-        transform: scale(1.1); // Увеличение логотипа при наведении
+        transform: scale(1.1);
       }
     }
   }
@@ -48,7 +45,7 @@
 
       &:hover {
         color: #0056b3;
-        transform: translateY(-5px); // Поднимаем элемент при наведении
+        transform: translateY(-5px);
       }
     }
   }
@@ -96,10 +93,10 @@
 }
 
 .footer-contact p {
-  cursor: pointer; /* Добавляет указатель курсора для нажатия */
+  cursor: pointer;
 }
 
-/* Стиль для отображения сообщения */
+
 .footer-contact .copied-message {
   display: block;
 }

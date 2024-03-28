@@ -18,7 +18,6 @@ export class AppComponent implements OnInit{
   copyLink({inputElement}: { inputElement: any }): void {
     inputElement.select();
     document.execCommand('copy');
-    // Показать уведомление об успешном копировании
   }
   ngOnInit(): void {
   window.addEventListener('scroll', () => {
@@ -34,6 +33,8 @@ export class AppComponent implements OnInit{
 scrollToTop(): void {
   window.scroll({top: 0, left: 0, behavior: 'smooth'});
 }
+
+
 
   copyPhoneNumber(phoneNumber: string) {
     navigator.clipboard.writeText(phoneNumber).then(() => {
@@ -51,8 +52,8 @@ scrollToTop(): void {
                 this.showCopiedMessage = false;
                 messageElement.classList.remove('hide');
               }
-            }, 500); // Длительность анимации fadeOut
-          }, 2000); // Время отображения сообщения
+            }, 500);
+          }, 2000);
         }
       }, 0);
     });

@@ -51,12 +51,12 @@ padding-bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px; // Увеличиваем расстояние между парными элементами
+  gap: 20px;
 
   .social-link {
     display: flex;
     align-items: center;
-    gap: 8px; // Расстояние между иконкой и текстом
+    gap: 8px;
 
     a {
       text-decoration: none;
@@ -65,7 +65,7 @@ padding-bottom: 0;
       transition: color 0.3s;
 
       &:hover {
-        color: #0056b3; // Цвет при наведении
+        color: #0056b3;
       }
     }
 
@@ -75,7 +75,7 @@ padding-bottom: 0;
       transition: color 0.3s;
 
       &:hover {
-        color: #0056b3; // Цвет при наведении
+        color: #0056b3;
       }
     }
   }
@@ -117,12 +117,12 @@ padding-bottom: 0;
     }
 .principles {
   display: flex;
-  flex-direction: column; // Вертикальное расположение элементов
-  align-items: center; // Выравнивание элементов по центру по горизонтали
-  gap: 20px; // Расстояние между элементами
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   padding-top: 10px;
-  max-width: 1200px; // Максимальная ширина блока, чтобы текст не растягивался слишком широко на больших экранах
-  margin: auto; // Автоматические отступы для центрирования блока
+  max-width: 1200px;
+  margin: auto;
 }
 
 .paragraph {
@@ -131,12 +131,12 @@ padding-bottom: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 100%; // Занимает всю доступную ширину
-  transition: transform 0.3s ease; // Анимация при наведении
+  width: 100%;
+  transition: transform 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px); // Поднимается при наведении, создавая эффект "подъема"
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); // Увеличиваем тень для большего акцента
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -144,23 +144,23 @@ padding-bottom: 0;
   background: linear-gradient(101deg, #CDDCFC 0%, #F2DADD 50.09%, #F8B7BF 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent; /* Сделать текст прозрачным, чтобы виден был только градиент */
+  color: transparent;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-  text-align: center; // Центрирование заголовка
+  text-align: center;
 }
 
 .text-of-principles {
   color: black;
   font-size: 16px;
   line-height: 1.6;
-  text-align: justify; // Выравнивание текста по ширине для лучшей читаемости
+  text-align: justify;
 }
 
 @media (max-width: 768px) {
   .principles {
-    flex-direction: column; // На маленьких экранах элементы идут один за другим
+    flex-direction: column;
   }
 }
 
@@ -171,47 +171,6 @@ padding-bottom: 0;
 }
 
 
-  //.form-section {
-  //  form {
-  //    display: flex;
-  //    flex-direction: column;
-  //    font-family: 'Josefin Sans', sans-serif;
-  //
-  //    input, textarea {
-  //      margin-bottom: 15px;
-  //      padding: 10px;
-  //      border-radius: 4px;
-  //      border: 1px solid #ccc;
-  //    }
-  //
-  //    .sending {
-  //    padding: 12px 25px;
-  //    font-size: 1em;
-  //    font-weight: bold;
-  //    color: #000;
-  //    background-color: #fff;
-  //    border: 2px solid #000;
-  //    border-radius: 25px; // Скругление углов
-  //    cursor: pointer;
-  //    outline: none;
-  //    text-align: center;
-  //    text-decoration: none; // Если кнопка является ссылкой
-  //    transition: all 0.3s ease;
-  //
-  //    &:hover {
-  //      background-color: #000;
-  //      color: #fff;
-  //      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
-  //      transform: translateY(-2px); // Небольшое поднятие кнопки
-  //    }
-  //
-  //    &:active {
-  //      transform: translateY(1px); // Эффект нажатия
-  //      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  //    }
-  //  }
-  //  }
-  //}
 }
 @media (max-width: 768px) {
   .contacts-container{

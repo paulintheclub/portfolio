@@ -52,12 +52,12 @@ padding-bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px; // Увеличиваем расстояние между парными элементами
+  gap: 20px;
 
   .social-link {
     display: flex;
     align-items: center;
-    gap: 8px; // Расстояние между иконкой и текстом
+    gap: 8px;
 
     a {
       text-decoration: none;
@@ -66,7 +66,7 @@ padding-bottom: 0;
       transition: color 0.3s;
 
       &:hover {
-        color: #0056b3; // Цвет при наведении
+        color: #0056b3;
       }
     }
 
@@ -76,7 +76,7 @@ padding-bottom: 0;
       transition: color 0.3s;
 
       &:hover {
-        color: #0056b3; // Цвет при наведении
+        color: #0056b3;
       }
     }
   }
@@ -85,7 +85,7 @@ padding-bottom: 0;
 
 @media (max-width: 768px) {
   .principles {
-    flex-direction: column; // На маленьких экранах элементы идут один за другим
+    flex-direction: column;
   }
 }
 
@@ -96,47 +96,6 @@ padding-bottom: 0;
 }
 
 
-  //.form-section {
-  //  form {
-  //    display: flex;
-  //    flex-direction: column;
-  //    font-family: 'Josefin Sans', sans-serif;
-  //
-  //    input, textarea {
-  //      margin-bottom: 15px;
-  //      padding: 10px;
-  //      border-radius: 4px;
-  //      border: 1px solid #ccc;
-  //    }
-  //
-  //    .sending {
-  //    padding: 12px 25px;
-  //    font-size: 1em;
-  //    font-weight: bold;
-  //    color: #000;
-  //    background-color: #fff;
-  //    border: 2px solid #000;
-  //    border-radius: 25px; // Скругление углов
-  //    cursor: pointer;
-  //    outline: none;
-  //    text-align: center;
-  //    text-decoration: none; // Если кнопка является ссылкой
-  //    transition: all 0.3s ease;
-  //
-  //    &:hover {
-  //      background-color: #000;
-  //      color: #fff;
-  //      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Добавляем тень для эффекта "подъема"
-  //      transform: translateY(-2px); // Небольшое поднятие кнопки
-  //    }
-  //
-  //    &:active {
-  //      transform: translateY(1px); // Эффект нажатия
-  //      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  //    }
-  //  }
-  //  }
-  //}
 }
 @media (max-width: 768px) {
   .contacts-container{

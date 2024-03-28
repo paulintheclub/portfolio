@@ -12,10 +12,10 @@ export class AboutMeComponent {
     private router: Router
   ) {
         this.router.events.pipe(
-      // Фильтруем, чтобы реагировать только на события завершения навигации
+
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      // Прокручиваем страницу вверх
+
       window.scrollTo(0, 0);
     });
   }

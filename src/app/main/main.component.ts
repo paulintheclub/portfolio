@@ -12,7 +12,7 @@ isProfileVisible: boolean = true;
   onScroll(event: any) {
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-    if (scrollPosition > 100) { // Example threshold value
+    if (scrollPosition > 100) {
       this.isProfileVisible = false;
     } else {
       this.isProfileVisible = true;
