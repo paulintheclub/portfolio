@@ -6,7 +6,7 @@ const sgMail = require('@sendgrid/mail');
 const app = express();
 
 
-sgMail.setApiKey('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');
+sgMail.setApiKey('api_Key');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -16,7 +16,7 @@ app.post('/sendmail', (req, res) => {
 
     const msg = {
         to,
-        from: 'pashtet0501@gmail.com',
+        from: '@gmail.com',
         subject,
         text,
     };
